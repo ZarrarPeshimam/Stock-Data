@@ -56,7 +56,7 @@ const App = () => {
           <button onClick={() => setDays(90)}>Last 90 Days</button>
         </div>
 
-        <StockChart data={chartData} prediction={prediction} />
+        <StockChart data={chartData} prediction={prediction} width={880} height={400}/>
         <Summary symbol={selected} />
           </>
         ) : (

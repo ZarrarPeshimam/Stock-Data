@@ -89,3 +89,67 @@ h1 {
   font-size: 16px;
   line-height: 1.6;
 }
+
+/* Summary container */
+.summary {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Each card */
+.summary-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  align-items: center;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: antiquewhite;
+  cursor: default;
+}
+
+/* Hover effect */
+.summary-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Label */
+.summary-card h3 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Value */
+.summary-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  margin: 0;
+}
+button {
+  outline: none;
+  background-color: rgb(15, 18, 151);
+  color: white;
+} 
+button:focus {
+  outline: none;
+}
+
+.dropdown { /* .dropdown-wrapper for custom components */
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: antiquewhite;
+    font-size: 16px;
+    appearance: none; /* Removes default OS styling for a cleaner look */
+    cursor: pointer;
+    min-width: 180px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* subtle shadow */
+}

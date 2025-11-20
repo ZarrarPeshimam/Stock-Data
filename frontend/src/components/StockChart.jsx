@@ -12,7 +12,7 @@ import {
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend);
 
-const StockChart = ({ data, prediction }) => {
+const StockChart = ({ data, prediction, width, height }) => {
   if (!data || data.length === 0) return <p>Select a company to view chart.</p>;
 
   const labels = data.map(d => d.Date);
@@ -25,8 +25,9 @@ const StockChart = ({ data, prediction }) => {
   const predPrices = prediction?.predicted_close || [];
 
   return (
-    <div style={{ width: "880px", margin: "20px auto", height: "400px" }}>
+    <div style={{ width: `${width}px`, margin: "20px auto", height: `${height}px` }}>
       <Line
+      style={{ height: '100%' }}
         data={{
           labels: [...labels, ...predDates], // extend X-axis
           datasets: [
@@ -39,6 +40,7 @@ const StockChart = ({ data, prediction }) => {
         options={{
           responsive: true,
           interaction: { mode: "index", intersect: false },
+          maintainAspectRatio: false,
           stacked: false,
           plugins: { legend: { position: "top" } },
           scales: {

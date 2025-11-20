@@ -28,7 +28,7 @@ const Compare = () => {
 
       {/* DROPDOWNS */}
       <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
-        <select value={symbol1} onChange={(e) => setSymbol1(e.target.value)}>
+        <select className="dropdown"  value={symbol1} onChange={(e) => setSymbol1(e.target.value)}>
           <option value="">Select Stock 1</option>
           {companies.map((c) => (
             <option key={c} value={c}>
@@ -37,7 +37,7 @@ const Compare = () => {
           ))}
         </select>
 
-        <select value={symbol2} onChange={(e) => setSymbol2(e.target.value)}>
+        <select className="dropdown"  value={symbol2} onChange={(e) => setSymbol2(e.target.value)}>
           <option value="">Select Stock 2</option>
           {companies.map((c) => (
             <option key={c} value={c}>
@@ -58,13 +58,9 @@ const Compare = () => {
           flexWrap: "wrap"
         }}
       >
-        <div style={{ Width: "400px" }}>
-          {data1 ? <StockChart data={data1} /> : <p></p>}
-        </div>
+        {data1 ? <StockChart data={data1} width={420} height={300}/> : <p></p>}
 
-        <div style={{Width: "400px" }}>
-          {data2 ? <StockChart data={data2} /> : <p></p>}
-        </div>
+        {data2 ? <StockChart data={data2} width={430} height={300}/> : <p></p>}
       </div>
 
     </div>

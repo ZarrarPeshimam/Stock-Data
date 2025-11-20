@@ -5,24 +5,31 @@ const Summary = ({ symbol }) => {
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
-    if (symbol) getSummary(symbol).then(res => setSummary(res.data));
+    if (symbol) {
+      getSummary(symbol).then((res) => {
+        console.log("SUMMARY DATA:", res.data);
+        setSummary(res.data);
+      });
+    }
   }, [symbol]);
-  useEffect(() => {
-  if (symbol)
-    getSummary(symbol).then((res) => {
-      console.log("SUMMARY DATA:", res.data);
-      setSummary(res.data);
-    });
-}, [symbol]);
-
 
   if (!summary) return null;
 
+  // Convert summary object to array of {label, value} for mapping
+  const metrics = [
+    { label: "52-Week High", value: summary["52_week_high"] },
+    { label: "52-Week Low", value: summary["52_week_low"] },
+    { label: "Average Close", value: summary["average_close"] },
+  ];
+
   return (
     <div className="summary">
-      <p>52-Week High: {summary["52_week_high"]}</p>
-      <p>52-Week Low: {summary["52_week_low"]}</p>
-      <p>Average Close: {summary["average_close"]}</p>
+      {metrics.map((metric) => (
+        <div key={metric.label} className="summary-card">
+          <h3>{metric.label}</h3>
+          <p>{metric.value}</p>
+        </div>
+      ))}
     </div>
   );
 };

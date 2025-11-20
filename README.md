@@ -166,9 +166,7 @@ hft-assignment/
 * The dashboard provides clear **visual insights** on stock trends, volatility, and predictions.
 * Can be extended with:
 
-  * Additional ML models (ARIMA, LSTM)
-  * Top Gainers/Losers panel
-  * Deployment with Docker
+  * Additional ML models
 
 ---
 
