@@ -32,7 +32,7 @@ app.add_middleware(
 # ---------------------------------------------------
 @app.get("/companies")
 def get_companies():
-    files = os.listdir("./data")
+    files = os.listdir("../data")
     companies = [file.replace("_cleaned.csv", "") for file in files if file.endswith(".csv")]
     return {"companies": companies}
 

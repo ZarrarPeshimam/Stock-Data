@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-DATA_DIR = "./data"   # adjust if needed
+DATA_DIR = "../data"   # adjust if needed
 
 
 # ---------------------------------------------
