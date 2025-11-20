@@ -94,3 +94,7 @@ def predict(symbol: str):
         return predict_prices(symbol)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="Symbol not found")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)), reload=True)
