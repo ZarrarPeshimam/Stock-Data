@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://stock-backend-y5b9.onrender.com";
 
 export const getCompanies = () => axios.get(`${API_BASE}/companies`);
 export const getStockData = (symbol, days = 30) =>

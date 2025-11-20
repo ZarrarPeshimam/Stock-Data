@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import StockChart from "./components/StockChart";
 import Summary from "./components/Summary";
+import Compare from "./components/Compare";
 import { getCompanies, getStockData, getPrediction } from "./api";
 import "./App.css";
 
@@ -11,6 +12,7 @@ const App = () => {
   const [chartData, setChartData] = useState([]);
   const [prediction, setPrediction] = useState(null);
   const [days, setDays] = useState(30);
+  const [showCompare, setShowCompare] = useState(false);
 
   // Fetch companies on mount
   useEffect(() => {
@@ -19,7 +21,9 @@ const App = () => {
 
   // Handle company selection
   const handleSelect = (symbol) => {
+    setShowCompare(false); // Hide compare, go back to chart view
     setSelected(symbol);
+    fetchData(symbol, days);
   };
 
   // Fetch chart data and prediction whenever selection or days change
@@ -36,6 +40,16 @@ const App = () => {
       <div className="main">
         <h1>Stock Dashboard</h1>
 
+        {/* Button to toggle compare mode */}
+        <button
+          onClick={() => setShowCompare(!showCompare)}
+          style={{ marginBottom: "20px" }}
+        >
+          {showCompare ? "Back to Chart" : "Compare Stocks"}
+        </button>
+
+        {!showCompare ? (
+          <>
         <div className="filter-buttons">
           <button onClick={() => setDays(7)}>Last 7 Days</button>
           <button onClick={() => setDays(30)}>Last 30 Days</button>
@@ -44,6 +58,10 @@ const App = () => {
 
         <StockChart data={chartData} prediction={prediction} />
         <Summary symbol={selected} />
+          </>
+        ) : (
+          <Compare />
+        )}
       </div>
     </div>
   );
